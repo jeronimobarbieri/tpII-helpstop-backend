@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using HelpApp.Domain.Validation;
+using System;
+using System.Collections.Generic;
 
 namespace HelpApp.Domain.Entities
 {
@@ -21,15 +23,15 @@ namespace HelpApp.Domain.Entities
         public ICollection<Product> Products { get; set; }
         #endregion
 
-        #region Validação
+        #region Validation
 
-        private void Validation(string name)
+        private void ValidationDomain(string name)
         {
-            DomainExceptionValidation.When(string.isNullOrEmpty(name), "Invalid name, name required");
+            DomainExceptionValidation.When(string.IsNullOrEmpty(name), "Invalid name, name required");
             DomainExceptionValidation.When(name.Length < 3, "Invalid name, to short, minum 3 character.");
 
             Name = name;
-)
+
         }
         #endregion
 
